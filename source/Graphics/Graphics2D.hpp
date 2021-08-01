@@ -5,13 +5,15 @@
 #include <vector>
 #include "IModel.hpp"
 #include "IRenderObject.hpp"
+#include "../Common/IObjectSubscriber.hpp"
 
 namespace Graphics {
-	class Graphics2D {
+	class Graphics2D: public Common::IObjectSubscriber {
 		public:
-			Graphics2D();
+			Graphics2D(GameLogic::GameLogic *gameLogic);
 			void createCircle();
 			void tick();
+			void newObject(Common::GameObject *commonPtr) override;
 		private:
 			IModel *circle;
 			std::vector<IRenderObject*> objects;

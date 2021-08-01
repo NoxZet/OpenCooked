@@ -4,12 +4,14 @@
 #include <gccore.h>
 #include <vector>
 #include "IPhysicsObject.hpp"
+#include "../Common/IObjectSubscriber.hpp"
 
 namespace Physics {
-	class Physics {
+	class Physics: public Common::IObjectSubscriber {
 		public:
-			Physics();
+			Physics(GameLogic::GameLogic *gameLogic);
 			void tick();
+			void newObject(Common::GameObject *commonPtr) override;
 		private:
 			std::vector<IPhysicsObject*> objects;
 	};
