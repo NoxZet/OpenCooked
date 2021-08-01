@@ -5,8 +5,8 @@
 #include <memory>
 #include "../Common/GameObject.hpp"
 
-namespace Graphics {
-	class GameObject {
+namespace GameLogic {
+	class GameObject: public IGameObject {
 		public:
 			GameObject(Common::GameObject *commonPtr) {
 				commonObject = std::shared_ptr<Common::GameObject>(commonPtr);

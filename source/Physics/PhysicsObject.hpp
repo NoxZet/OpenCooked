@@ -3,10 +3,11 @@
 #include <string.h>
 #include <gccore.h>
 #include <memory>
+#include "IPhysicsObject.hpp"
 #include "../Common/GameObject.hpp"
 
 namespace Physics {
-	class PhysicsObject {
+	class PhysicsObject: public IPhysicsObject {
 		public:
 			PhysicsObject(Common::GameObject *commonPtr) {
 				commonObject = std::shared_ptr<Common::GameObject>(commonPtr);
