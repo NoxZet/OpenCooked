@@ -3,6 +3,10 @@
 
 namespace GameLogic {
 
+GameLogic::GameLogic() {
+	// stub
+}
+
 void GameLogic::tick() {
 	// stub
 }

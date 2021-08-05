@@ -7,6 +7,7 @@
 
 namespace Common {
 	class IObjectSubscriber {
-		virtual void newObject(std::shared_ptr<Common::GameObject> commonPtr) = 0;
+		public:
+			virtual void newObject(std::shared_ptr<Common::GameObject> commonPtr) = 0;
 	};
 }

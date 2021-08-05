@@ -3,11 +3,13 @@
 namespace Graphics {
 
 void RenderObject::draw(Mtx view) {
+	color[0] = 0xff;
+	
 	Mtx model, modelview;
 	// Calculate and load matrix for displaying
 	guMtxIdentity(model);
-	guMtxScaleApply(model, model, sx, sy, sz);
-	guMtxTransApply(model, model, x / 5, -y / 5, -z / 5);
+	guMtxScaleApply(model, model, commonObject->scale, commonObject->scale, commonObject->scale);
+	guMtxTransApply(model, model, commonObject->x / 5, -commonObject->y / 5, -commonObject->z / 5);
 	guMtxConcat(view, model, modelview);
 	
 	// Set color indirect array to this RenderObject's color
