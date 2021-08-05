@@ -29,6 +29,7 @@ int main(int argc, char **argv) {
 	GameLogic::GameLogic gameLogic = GameLogic::GameLogic();
 	Physics::Physics graphics = Physics::Physics(&gameLogic);
 	Graphics::Graphics2D graphics = Graphics::Graphics2D(&gameLogic);
+	gameLogic.init();
 	
 	int counter = 0;
 	
