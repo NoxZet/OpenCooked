@@ -20,10 +20,10 @@ void GameLogic::createObject() {
 	// Create and initialize the game object (both data store and logic object)
 	std::shared_ptr<Common::GameObject> commonPtr = std::make_shared<Common::GameObject>();
 	commonPtr->scale = 20;
-	GameObject = new GameObject(commonPtr);
+	GameObject *gameObject = new GameObject(commonPtr);
 	
-	// Save object
-	objects.push_back();
+	// Save object to GameLogic controller
+	objects.push_back(gameObject);
 
 	// Distribute object to other controllers
 	for (auto subscriber : objectSubscribers) {
