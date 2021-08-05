@@ -17,7 +17,10 @@ namespace Graphics {
 static GXRModeObj *rmode = nullptr;
 static void *frameBuffer[2] = { NULL, NULL };
 
-Graphics2D::Graphics2D() {
+Graphics2D::Graphics2D(GameLogic::GameLogic &gameLogic) {
+	// Register with GameLogic controller to receive new objects
+	gameLogic.registerObjectSubscriber(*this);
+
 
 	// init the vi.
 	VIDEO_Init();
@@ -157,8 +160,6 @@ void Graphics2D::createCircle() {
 	circle = new Model(dispList, dispSize);
 }
 
-static s32 ym = -10.0f;
-
 void Graphics2D::tick() {
 	u32 *colorf = new u32(3);
 
@@ -169,19 +170,11 @@ void Graphics2D::tick() {
 	guMtxTransApply(view, currView, 0.0f, 0.0f, -126.0f);
 	// Rescale because pixels aren't square
 	guMtxScaleApply(currView, currView, wide ? XSCALE_WIDE: XSCALE, 1.0f, 1.0f);
-	if (ym > 100)
-		ym = -100;
-	ym += 1;
-	
-	f32 x = -20.0f;
-	u8 i = 0;
+
 	for (IRenderObject *object : objects) {
-		x += 20.0f;
-		object->setPosition(x, (f32)ym, 0.0f);
 		object->draw(currView);
 		//GX_DrawDone();
 		GX_Flush();
-		i++;
 	}
 
 	// do this stuff after drawing
@@ -200,6 +193,11 @@ void Graphics2D::tick() {
 	VIDEO_WaitVSync();
 	
 	delete[] colorf;
+}
+
+void Graphics2D::newObject(std::shared_ptr<Common::GameObject> commonPtr) {
+	RenderObject *object = new RenderObject(commonPtr, circle);
+	objects.push_back(object);
 }
 	
 }

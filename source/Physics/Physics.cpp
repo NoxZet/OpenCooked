@@ -3,7 +3,7 @@
 
 namespace Physics {
 
-Physics::Physics() {
+Physics::Physics(GameLogic::GameLogic &gameLogic) {
 	gameLogic.registerObjectSubscriber(*this);
 }
 
