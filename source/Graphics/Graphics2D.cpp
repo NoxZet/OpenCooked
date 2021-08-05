@@ -112,24 +112,6 @@ Graphics2D::Graphics2D(GameLogic::GameLogic &gameLogic) {
 	);*/
 	
 	createCircle();
-
-	auto circleObj = new RenderObject(circle);
-	circleObj->setScale(20.0f, 20.0f, 20.0f);
-	circleObj->setPosition(-30.0f, -10.0f, 0.0f);
-	circleObj->setColor(0xff, 0x80, 0x00);
-	objects.push_back(circleObj);
-	
-	circleObj = new RenderObject(circle);
-	circleObj->setScale(20.0f, 20.0f, 20.0f);
-	circleObj->setPosition(30.0f, -20.0f, 0.0f);
-	circleObj->setColor(0xff, 0x00, 0x80);
-	objects.push_back(circleObj);
-	
-	circleObj = new RenderObject(circle);
-	circleObj->setScale(20.0f, 20.0f, 20.0f);
-	circleObj->setPosition(30.0f, 30.0f, 0.0f);
-	circleObj->setColor(0x00, 0xa0, 0xa0);
-	objects.push_back(circleObj);
 }
 
 void Graphics2D::createCircle() {

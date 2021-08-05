@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <gccore.h>
-#include <memory.h>
+#include <memory>
 #include "IModel.hpp"
 #include "IRenderObject.hpp"
+#include "../Common/GameObject.hpp"
 
 namespace Graphics {
 	class RenderObject: public IRenderObject {

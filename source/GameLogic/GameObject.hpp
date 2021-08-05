@@ -8,7 +8,7 @@
 namespace GameLogic {
 	class GameObject: public IGameObject {
 		public:
-			GameObject(std::shared_ptr<Common::GameObject> commonPtr) commonObject(commonPtr) {};
+			GameObject(std::shared_ptr<Common::GameObject> commonPtr): commonObject(commonPtr) {};
 			//virtual void setPosition(f32 x, f32 y, f32 z) = 0;
 		private:
 			std::shared_ptr<Common::GameObject> commonObject;
