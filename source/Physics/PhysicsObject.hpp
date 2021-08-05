@@ -9,10 +9,8 @@
 namespace Physics {
 	class PhysicsObject: public IPhysicsObject {
 		public:
-			PhysicsObject(Common::GameObject *commonPtr) {
-				commonObject = std::shared_ptr<Common::GameObject>(commonPtr);
-			}
-			//virtual void setPosition(f32 x, f32 y, f32 z) = 0;
+			PhysicsObject(std::shared_ptr<Common::GameObject> commonPtr): commonObject(commonPtr) {};
+			//void setPosition(f32 x, f32 y, f32 z) override;
 		private:
 			std::shared_ptr<Common::GameObject> commonObject;
 	};
