@@ -6,6 +6,7 @@
 #include "IModel.hpp"
 #include "IRenderObject.hpp"
 #include "../Common/IObjectSubscriber.hpp"
+#include "../GameLogic/GameLogic.hpp"
 
 namespace Graphics {
 	class Graphics2D: public Common::IObjectSubscriber {

@@ -5,6 +5,7 @@
 #include <vector>
 #include "IPhysicsObject.hpp"
 #include "../Common/IObjectSubscriber.hpp"
+#include "../GameLogic/GameLogic.hpp"
 
 namespace Physics {
 	class Physics: public Common::IObjectSubscriber {
