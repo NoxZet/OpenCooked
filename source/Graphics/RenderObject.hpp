@@ -2,13 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <gccore.h>
+#include <memory.h>
 #include "IModel.hpp"
 #include "IRenderObject.hpp"
 
 namespace Graphics {
 	class RenderObject: public IRenderObject {
 		public:
-			RenderObject(IModel *model): model(model) {};
+			RenderObject(std::shared_ptr<Common::GameObject> commonPtr, IModel *model): commonObject(commonPtr), model(model) {};
 			void draw(Mtx view) override;
 			void setPosition(f32 x, f32 y, f32 z) override {
 				this->x = x;
@@ -36,6 +37,7 @@ namespace Graphics {
 			f32 x, y, z;
 			u8 color[4] = {0, 0, 0, 0xff};
 			f32 sx, sy, sz;
+			std::shared_ptr<Common::GameObject> commonObject;
 			IModel *model;
 	};
 }

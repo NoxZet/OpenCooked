@@ -11,7 +11,7 @@ namespace GameLogic {
 		public:
 			GameLogic();
 			void tick();
-			void registerObjectSubscriber(Common::IObjectSubscriber *objectSubscriber);
+			void registerObjectSubscriber(Common::IObjectSubscriber &objectSubscriber);
 		private:
 			std::vector<IGameObject*> objects;
 			std::vector<Common::IObjectSubscriber*> objectSubscribers;

@@ -12,7 +12,7 @@ namespace Physics {
 		public:
 			Physics(GameLogic::GameLogic *gameLogic);
 			void tick();
-			void newObject(Common::GameObject *commonPtr) override;
+			void newObject(std::shared_ptr<Common::GameObject> commonPtr) override;
 		private:
 			std::vector<IPhysicsObject*> objects;
 	};

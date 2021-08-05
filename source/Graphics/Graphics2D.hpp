@@ -14,7 +14,7 @@ namespace Graphics {
 			Graphics2D(GameLogic::GameLogic *gameLogic);
 			void createCircle();
 			void tick();
-			void newObject(Common::GameObject *commonPtr) override;
+			void newObject(std::shared_ptr<Common::GameObject> commonPtr) override;
 		private:
 			IModel *circle;
 			std::vector<IRenderObject*> objects;
