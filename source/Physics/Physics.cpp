@@ -7,6 +7,12 @@ Physics::Physics(GameLogic::GameLogic &gameLogic) {
 	gameLogic.registerObjectSubscriber(*this);
 }
 
+Physics::~Physics() {
+	for (auto object : objects) {
+		delete object;
+	}
+}
+
 void Physics::tick() {
 	// stub
 }

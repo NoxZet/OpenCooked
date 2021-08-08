@@ -11,6 +11,7 @@ namespace Physics {
 	class Physics: public Common::IObjectSubscriber {
 		public:
 			Physics(GameLogic::GameLogic &gameLogic);
+			~Physics();
 			void tick();
 			void newObject(std::shared_ptr<Common::GameObject> commonPtr) override;
 		private:
