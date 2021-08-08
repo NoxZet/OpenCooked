@@ -20,6 +20,8 @@ namespace Common {
 		u32 id;
 		// type from which model to be used can be devised
 		u32 type;
-		bool exists = true;
+		// If set to true, all controllers will deallocate their own object wrapping this GameObject
+		// Only the main carrying object (GameLogic controller) should set this variable
+		bool deleted = false;
 	};
 }

@@ -12,6 +12,9 @@ namespace Graphics {
 		public:
 			RenderObject(std::shared_ptr<Common::GameObject> commonPtr, IModel *model): commonObject(commonPtr), model(model) {};
 			~RenderObject() override {};
+			bool isDeleted() override {
+				return commonObject->deleted;
+			}
 			void draw(Mtx view) override;
 			void setColor(u8 cr, u8 cg, u8 cb, u8 ca) {
 				u8 *colorArr = (u8*)(&color);

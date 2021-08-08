@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <malloc.h>
+#include <algorithm>
 #include "Model.hpp"
 #include "RenderObject.hpp"
 
@@ -149,6 +150,8 @@ void Graphics2D::createCircle() {
 }
 
 void Graphics2D::tick() {
+	clearObjects();
+	
 	u32 *colorf = new u32(3);
 
 	// do this before drawing
@@ -181,6 +184,21 @@ void Graphics2D::tick() {
 	VIDEO_WaitVSync();
 	
 	delete[] colorf;
+}
+
+void Graphics2D::clearObjects() {
+	// - See https://en.wikipedia.org/wiki/Erase–remove_idiom
+	// - In a nutshell, remove_if moves all elements that match the predicate to the end of the
+	//   vector and returns a pointer to the first of these elements, it keeps the vector's length
+	auto deleteIt = std::remove_if(objects.begin(), objects.end(), [](IRenderObject *object) {
+		return object->isDeleted();
+	});
+	// - Then we deallocate the RenderObjects
+	for (auto deallocIt = deleteIt; deallocIt != objects.end(); deallocIt++) {
+		delete *deallocIt;
+	}
+	// - Erase removes all elements past the input pointer
+	objects.erase(deleteIt, objects.end());
 }
 
 void Graphics2D::newObject(std::shared_ptr<Common::GameObject> commonPtr) {
