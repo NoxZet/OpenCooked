@@ -6,6 +6,7 @@
 namespace GameLogic {
 	class IGameObject {
 		public:
+			virtual ~IGameObject() {};
 			//virtual void setPosition(f32 x, f32 y, f32 z) = 0;
 	};
 }

@@ -6,6 +6,7 @@
 namespace Graphics {
 	class IRenderObject {
 		public:
+			virtual ~IRenderObject() {};
 			virtual void draw(Mtx view) = 0;
 	};
 }

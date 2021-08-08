@@ -114,6 +114,12 @@ Graphics2D::Graphics2D(GameLogic::GameLogic &gameLogic) {
 	createCircle();
 }
 
+Graphics2D::~Graphics2D() {
+	for (auto object : objects) {
+		delete object;
+	}
+}
+
 void Graphics2D::createCircle() {
 	f32 r = 0.1f;
 	void *dispList = memalign(32, 704);

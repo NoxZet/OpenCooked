@@ -12,6 +12,7 @@ namespace Graphics {
 	class Graphics2D: public Common::IObjectSubscriber {
 		public:
 			Graphics2D(GameLogic::GameLogic &gameLogic);
+			~Graphics2D();
 			void createCircle();
 			void tick();
 			void newObject(std::shared_ptr<Common::GameObject> commonPtr) override;
