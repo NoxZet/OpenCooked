@@ -17,6 +17,9 @@ namespace Graphics {
 			void tick();
 			void newObject(std::shared_ptr<Common::GameObject> commonPtr) override;
 		private:
+			// Removes any objects that were deleted (by another controller)
+			void clearObjects();
+			
 			IModel *circle;
 			std::vector<IRenderObject*> objects;
 			bool wide;

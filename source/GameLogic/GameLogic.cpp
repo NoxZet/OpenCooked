@@ -7,13 +7,35 @@ GameLogic::GameLogic() {
 	// stub
 }
 
+static u32 i = 0;
+
 void GameLogic::tick() {
+	// Example of deletion and recreation
+	i++;
+	if (i == 60)
+		createObject();
+	if (i == 120)
+		createObject();
+	if (i == 180)
+		createObject();
+	if (i == 240)
+		deleteObject(1);
+	/*if (i == 300)
+		createObject();
+	if (i == 400) {
+		deleteObject(1);
+		//createObject();
+	}*/
+	/*if (i % 60 == 0) {
+		//deleteObject(0);
+		createObject();
+	}*/
 	// stub
 }
 
 void GameLogic::init() {
 	// Example object creation
-	createObject();
+	//createObject();
 }
 
 void GameLogic::registerObjectSubscriber(Common::IObjectSubscriber &objectSubscriber) {
@@ -23,6 +45,8 @@ void GameLogic::registerObjectSubscriber(Common::IObjectSubscriber &objectSubscr
 void GameLogic::createObject() {
 	// Create and initialize the game object (both data store and logic object)
 	std::shared_ptr<Common::GameObject> commonPtr = std::make_shared<Common::GameObject>();
+	
+	commonPtr->x = i / 3;
 	
 	// Set scale
 	commonPtr->sx = 20;
@@ -42,6 +66,12 @@ void GameLogic::createObject() {
 	for (auto subscriber : objectSubscribers) {
 		subscriber->newObject(commonPtr);
 	}
+}
+
+void GameLogic::deleteObject(u32 i) {
+	auto deletionIt = objects.begin() + i;
+	delete (*deletionIt);
+	objects.erase(deletionIt);
 }
 
 }
