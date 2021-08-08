@@ -3,12 +3,12 @@
 namespace Graphics {
 
 void RenderObject::draw(Mtx view) {
-	color[0] = 0xff;
+	setColor(commonObject->cr, commonObject->cg, commonObject->cb, 0xff);
 	
 	Mtx model, modelview;
 	// Calculate and load matrix for displaying
 	guMtxIdentity(model);
-	guMtxScaleApply(model, model, commonObject->scale, commonObject->scale, commonObject->scale);
+	guMtxScaleApply(model, model, commonObject->sx, commonObject->sy, commonObject->sz);
 	guMtxTransApply(model, model, commonObject->x / 5, -commonObject->y / 5, -commonObject->z / 5);
 	guMtxConcat(view, model, modelview);
 	
