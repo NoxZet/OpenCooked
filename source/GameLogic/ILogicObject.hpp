@@ -4,9 +4,9 @@
 #include <gccore.h>
 
 namespace GameLogic {
-	class IGameObject {
+	class ILogicObject {
 		public:
-			virtual ~IGameObject() {};
+			virtual ~ILogicObject() {};
 			//virtual void setPosition(f32 x, f32 y, f32 z) = 0;
 	};
 }

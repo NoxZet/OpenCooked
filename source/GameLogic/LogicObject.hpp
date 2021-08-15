@@ -6,10 +6,10 @@
 #include "../Common/GameObject.hpp"
 
 namespace GameLogic {
-	class GameObject: public IGameObject {
+	class LogicObject: public ILogicObject {
 		public:
-			GameObject(std::shared_ptr<Common::GameObject> commonPtr): commonObject(commonPtr) {};
-			~GameObject() override {
+			LogicObject(std::shared_ptr<Common::GameObject> commonPtr): commonObject(commonPtr) {};
+			~LogicObject() override {
 				// This is the main carrying wrapper object, if it's deleted, we want to
 				// delete all other wrapper objects as well
 				commonObject->deleted = true;
