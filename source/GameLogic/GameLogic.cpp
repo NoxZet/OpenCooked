@@ -20,16 +20,12 @@ void GameLogic::tick() {
 		createObject();
 	if (i == 240)
 		deleteObject(1);
-	/*if (i == 300)
+	if (i == 300)
 		createObject();
 	if (i == 400) {
 		deleteObject(1);
-		//createObject();
-	}*/
-	/*if (i % 60 == 0) {
-		//deleteObject(0);
 		createObject();
-	}*/
+	}
 	// stub
 }
 
