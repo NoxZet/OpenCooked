@@ -1,5 +1,5 @@
 #include "GameLogic.hpp"
-#include "GameObject.hpp"
+#include "LogicObject.hpp"
 
 namespace GameLogic {
 
@@ -53,7 +53,7 @@ void GameLogic::createObject() {
 	commonPtr->cg = 0x99;
 	commonPtr->cb = 0x30;
 	
-	GameObject *gameObject = new GameObject(commonPtr);
+	LogicObject *gameObject = new LogicObject(commonPtr);
 	
 	// Save object to GameLogic controller
 	objects.push_back(gameObject);

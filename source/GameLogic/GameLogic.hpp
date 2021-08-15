@@ -3,7 +3,7 @@
 #include <string.h>
 #include <gccore.h>
 #include <vector>
-#include "IGameObject.hpp"
+#include "ILogicObject.hpp"
 #include "../Common/IObjectSubscriber.hpp"
 
 namespace GameLogic {
@@ -20,7 +20,7 @@ namespace GameLogic {
 			void createObject();
 			// Deletes objects at the given index - undefined if `i < 0 || i >= objects.size()`
 			void deleteObject(u32 i);
-			std::vector<IGameObject*> objects;
+			std::vector<ILogicObject*> objects;
 			std::vector<Common::IObjectSubscriber*> objectSubscribers;
 	};
 }
