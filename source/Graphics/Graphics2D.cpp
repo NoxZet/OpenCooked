@@ -33,8 +33,6 @@ Graphics2D::Graphics2D(GameLogic::GameLogic &gameLogic) {
 	frameBuffer[0] = MEM_K0_TO_K1(SYS_AllocateFramebuffer(rmode));
 	frameBuffer[1] = MEM_K0_TO_K1(SYS_AllocateFramebuffer(rmode));
 
-	console_init(frameBuffer[0],20,20,rmode->fbWidth,rmode->xfbHeight,rmode->fbWidth*VI_DISPLAY_PIX_SZ);
-
 	VIDEO_Configure(rmode);
 	VIDEO_SetNextFramebuffer(frameBuffer[fb]);
 	VIDEO_SetBlack(FALSE);
@@ -151,8 +149,6 @@ void Graphics2D::createCircle() {
 
 void Graphics2D::tick() {
 	clearObjects();
-	
-	u32 *colorf = new u32(3);
 
 	// do this before drawing
 	GX_SetViewport(0,0,rmode->fbWidth,rmode->efbHeight,0,1);
@@ -164,15 +160,13 @@ void Graphics2D::tick() {
 
 	for (IRenderObject *object : objects) {
 		object->draw(currView);
-		//GX_DrawDone();
-		GX_Flush();
 	}
 
 	// do this stuff after drawing
 	GX_DrawDone();
 	
 
-	//fb ^= 1;		// flip framebuffer
+	fb ^= 1;		// flip framebuffer
 	GX_SetZMode(GX_TRUE, GX_LEQUAL, GX_TRUE);
 	GX_SetColorUpdate(GX_TRUE);
 	GX_CopyDisp(frameBuffer[fb],GX_TRUE);
@@ -182,8 +176,6 @@ void Graphics2D::tick() {
 	VIDEO_Flush();
 
 	VIDEO_WaitVSync();
-	
-	delete[] colorf;
 }
 
 void Graphics2D::clearObjects() {

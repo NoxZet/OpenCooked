@@ -22,7 +22,7 @@ int main(int argc, char **argv) {
 	SYS_SetPowerCallback(shutdown);
 
 	// This function initialises the attached controllers
-	// WPAD_Init();
+	WPAD_Init();
 	
 	
 	// Setup main controllers
@@ -34,6 +34,11 @@ int main(int argc, char **argv) {
 	int counter = 0;
 	
 	while (run) {
+
+		WPAD_ScanPads();
+
+		if (WPAD_ButtonsDown(0) & WPAD_BUTTON_HOME) exit(0);
+		
 		gameLogic.tick();
 		physics.tick();
 		graphics.tick();
@@ -50,8 +55,6 @@ int main(int argc, char **argv) {
 		// We return to the launcher application via exit
 		// if ( pressed & WPAD_BUTTON_HOME ) exit(0);
 	}
-	
-	exit(0);
 
 	return 0;
 }
